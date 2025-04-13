@@ -25,6 +25,8 @@ export interface Comment {
   createdAt: string;
   body: string;
   isMinimized?: boolean;
+  isBot?: boolean;
+  isEdited?: boolean;
   reactions?: {
     totalCount: number;
     viewerHasReacted: boolean;
@@ -49,6 +51,14 @@ export interface Review {
   state: 'APPROVED' | 'CHANGES_REQUESTED' | 'COMMENTED' | 'DISMISSED' | 'PENDING';
   submittedAt: string;
   body?: string;
+  reactions?: {
+    totalCount: number;
+    viewerHasReacted: boolean;
+    types: {
+      type: string;
+      count: number;
+    }[];
+  };
 }
 
 export interface PullRequest {

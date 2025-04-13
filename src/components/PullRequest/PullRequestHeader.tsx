@@ -4,9 +4,10 @@ import { RelativeTime } from './RelativeTime';
 
 interface PullRequestHeaderProps {
   pullRequest: PullRequest;
+  scrollY?: number;
 }
 
-export const PullRequestHeader: React.FC<PullRequestHeaderProps> = ({ pullRequest }) => {
+export const PullRequestHeader: React.FC<PullRequestHeaderProps> = ({ pullRequest, scrollY = 0 }) => {
   const { title, number, state, author, baseRepository, baseRefName, headRepository, headRefName, createdAt } = pullRequest;
   
   const formatDate = (dateString: string) => {
@@ -28,8 +29,38 @@ export const PullRequestHeader: React.FC<PullRequestHeaderProps> = ({ pullReques
   };
 
   return (
-    <div className="mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-      <div className="flex flex-col md:flex-row mb-2">
+    <>
+      {/* Sticky header for scrolling - simplified version */}
+      <div className={`fixed top-0 left-0 right-0 bg-white dark:bg-[#0d1117] border-b border-gray-200 dark:border-gray-700 z-50 py-2 px-4 shadow-sm transition-opacity duration-200 ${scrollY > 60 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center min-w-0">
+              <div className="mr-2 flex-shrink-0">
+                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStateColor()}`}>
+                  {state === 'MERGED' && (
+                    <svg height="12" className="mr-1" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true">
+                      <path fill="currentColor" d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z"></path>
+                    </svg>
+                  )}
+                  {state}
+                </span>
+              </div>
+
+              <div className="min-w-0 mr-2">
+                <h1 className="text-base font-medium flex">
+                  <a href="#top" className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 truncate">
+                    {title}
+                  </a>
+                  <span className="text-gray-500 dark:text-gray-400 pl-1">#{number}</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+        <div className="flex flex-col md:flex-row mb-2">
         <div className="md:order-1 md:ml-2 mb-3 md:mb-2 flex items-center gap-2 flex-shrink-0">
           <div className="relative inline-block">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-1 px-3 text-sm rounded">
@@ -99,33 +130,7 @@ export const PullRequestHeader: React.FC<PullRequestHeaderProps> = ({ pullReques
           </RelativeTime>
         </div>
       </div>
-
-      {/* Sticky header for scrolling - simplified version */}
-      <div className="hidden md:block sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-10 py-2 px-4 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center min-w-0">
-            <div className="mr-2 flex-shrink-0">
-              <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStateColor()}`}>
-                {state === 'MERGED' && (
-                  <svg height="12" className="mr-1" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true">
-                    <path fill="currentColor" d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z"></path>
-                  </svg>
-                )}
-                {state}
-              </span>
-            </div>
-
-            <div className="min-w-0 mr-2">
-              <h1 className="text-base font-medium flex">
-                <a href="#top" className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 truncate">
-                  {title}
-                </a>
-                <span className="text-gray-500 dark:text-gray-400 pl-1">#{number}</span>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+    </>
   );
 };

@@ -40,7 +40,7 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
         );
       case 'label':
         return (
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" className="text-gray-600 dark:text-gray-400">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" className="text-green-600 dark:text-green-400">
             <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
           </svg>
         );
@@ -88,8 +88,23 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
         );
       case 'merge':
         return (
-          <div className="flex items-center">
-            <span className="text-gray-700 dark:text-gray-300">merged this pull request</span>
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center">
+              <span className="text-gray-700 dark:text-gray-300">merged commit </span>
+              <a href="#" className="ml-1 mr-1 text-gray-700 dark:text-gray-300 font-mono text-sm">
+                {content?.commit?.substring(0, 7) || ''}
+              </a>
+              <span className="text-gray-700 dark:text-gray-300">into </span>
+              <span className="ml-1 text-blue-600 dark:text-blue-400">shadcn-ui:main</span>
+              {content?.checksCount && (
+                <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm">
+                  {content.checksCount} checks passed
+                </span>
+              )}
+            </div>
+            <a href="#" className="ml-2 text-sm text-blue-600 dark:text-blue-400 hover:underline bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">
+              View details
+            </a>
           </div>
         );
       case 'rename':
@@ -101,12 +116,27 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
             <span className="mx-1 font-semibold dark:text-gray-300">{content.to}</span>
           </div>
         );
-      case 'deploy':
+      case 'label':
         return (
           <div className="flex items-center">
-            <span className="text-gray-700 dark:text-gray-300">deployed to </span>
-            <a href={content.url} className="ml-1 text-blue-600 dark:text-blue-400 hover:underline">
-              {content.environment}
+            <span className="text-gray-700 dark:text-gray-300">added the </span>
+            <span className="mx-1 px-2 py-0.5 text-xs font-medium rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
+              {content.label.name}
+            </span>
+            <span className="text-gray-700 dark:text-gray-300"> label</span>
+          </div>
+        );
+      case 'deploy':
+        return (
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center">
+              <span className="text-gray-700 dark:text-gray-300">deployed to </span>
+              <a href={content.url} className="ml-1 text-blue-600 dark:text-blue-400 hover:underline">
+                {content.environment}
+              </a>
+            </div>
+            <a href="#" className="ml-2 text-sm text-blue-600 dark:text-blue-400 hover:underline bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">
+              View deployment
             </a>
           </div>
         );
@@ -117,18 +147,20 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
 
   return (
     <div className="flex items-start py-2">
-      <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 mr-3">
+      <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full border-2 border-white dark:border-gray-900 mr-3">
         {renderIcon()}
       </div>
       <div className="flex-grow min-w-0">
         <div className="flex items-center flex-wrap">
           {actor && (
             <a href={actor.url} className="flex-shrink-0 mr-1">
-              <img 
-                src={actor.avatarUrl} 
-                alt={actor.login} 
-                className="w-5 h-5 rounded-full"
-              />
+              <div className="w-5 h-5 rounded-full bg-white dark:bg-[#0d1117] flex items-center justify-center">
+                <img
+                  src={actor.avatarUrl}
+                  alt={actor.login}
+                  className="w-5 h-5 rounded-full border border-white dark:border-gray-900"
+                />
+              </div>
             </a>
           )}
           {actor && (

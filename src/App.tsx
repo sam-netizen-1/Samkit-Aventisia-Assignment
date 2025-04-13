@@ -32,8 +32,8 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-      <div 
+    <div className={`min-h-screen ${darkMode ? 'dark bg-[#0d1117] text-white' : 'bg-gray-50 text-gray-900'}`}>
+      <div
         className={`fixed top-0 left-0 right-0 h-[1px] z-50 transition-opacity duration-200 ${
           scrollY > 60 ? 'opacity-100' : 'opacity-0'
         }`}
@@ -67,23 +67,26 @@ function App() {
       </div>
 
       <main className="py-6">
-        <PullRequestPage />
+        <PullRequestPage scrollY={scrollY} />
       </main>
 
-      <footer className={`border-t ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'} py-6 mt-8`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center">
-            <svg className={`h-6 w-6 ${darkMode ? 'text-gray-400' : 'text-gray-500'} mr-2`} viewBox="0 0 16 16" fill="currentColor">
+      <footer className={`border-t ${darkMode ? 'border-gray-700 bg-[#0d1117]' : 'border-gray-200 bg-white'} py-4 mt-8`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap gap-4 justify-center md:justify-start items-center text-xs">
+          <div className="flex items-center mr-4">
+            <svg className={`h-5 w-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'} mr-2`} viewBox="0 0 16 16" fill="currentColor">
               <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
             </svg>
-            <span className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>© 2025 GitHub, Inc.</span>
+            <span className={`${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>© 2025 GitHub, Inc.</span>
           </div>
-          <div className="flex space-x-6">
-            <a href="#" className={`text-sm ${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Terms</a>
-            <a href="#" className={`text-sm ${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Privacy</a>
-            <a href="#" className={`text-sm ${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Security</a>
-            <a href="#" className={`text-sm ${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Status</a>
-            <a href="#" className={`text-sm ${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Help</a>
+          <div className="flex flex-wrap gap-4">
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Terms</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Privacy</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Security</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Status</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Docs</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Contact</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Manage cookies</a>
+            <a href="#" className={`${darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'}`}>Do not share my personal information</a>
           </div>
         </div>
       </footer>

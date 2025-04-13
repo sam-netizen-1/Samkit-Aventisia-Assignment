@@ -66,18 +66,8 @@ export const pullRequestData: PullRequest = {
         url: "https://github.com/apps/vercel"
       },
       createdAt: "2025-03-14T16:33:00Z",
-      body: "@YordanIliev2002 is attempting to deploy a commit to the **shadcn-pro** Team on [Vercel](https://vercel.com).\n\nA member of the Team first needs to [authorize it](https://vercel.com/git/authorize?team=shadcn-pro&type=github&job=%7B%22headInfo%22%3A%7B%22sha%22%3A%2226c11499e13a5b32cbc9721b792fb8a25c12e728%22%7D%2C%22id%22%3A%22QmdfbTN744KjJ8ZeVssQ5cGbvhCxrjhXVxx2AxLv5M1BeY%22%2C%22org%22%3A%22shadcn-ui%22%2C%22prId%22%3A6928%2C%22repo%22%3A%22ui%22%7D)."
-    },
-    {
-      id: "PRR_kwDOIuCgE86gVg1A",
-      author: {
-        id: "MDQ6VXNlcjEyNDU5OQ==",
-        login: "shadcn",
-        avatarUrl: "https://avatars.githubusercontent.com/u/124599?s=60&v=4",
-        url: "https://github.com/shadcn"
-      },
-      createdAt: "2025-03-17T10:40:38Z",
-      body: "Thank you"
+      body: "@YordanIliev2002 is attempting to deploy a commit to the **shadcn-pro** Team on [Vercel](https://vercel.com).\n\nA member of the Team first needs to [authorize it](https://vercel.com/git/authorize?team=shadcn-pro&type=github&job=%7B%22headInfo%22%3A%7B%22sha%22%3A%2226c11499e13a5b32cbc9721b792fb8a25c12e728%22%7D%2C%22id%22%3A%22QmdfbTN744KjJ8ZeVssQ5cGbvhCxrjhXVxx2AxLv5M1BeY%22%2C%22org%22%3A%22shadcn-ui%22%2C%22prId%22%3A6928%2C%22repo%22%3A%22ui%22%7D).",
+      isBot: true
     },
     {
       id: "IC_kwDOIuCgE86iqZrS",
@@ -88,7 +78,9 @@ export const pullRequestData: PullRequest = {
         url: "https://github.com/apps/vercel"
       },
       createdAt: "2025-03-17T10:40:55Z",
-      body: "**The latest updates on your projects**. Learn more about [Vercel for Git ↗︎](https://vercel.link/github-learn-more)\n\n| Name | Status | Preview | Updated (UTC) |\n| --- | --- | --- | --- |\n| **ui** | ✅ Ready ([Inspect](https://vercel.com/shadcn-pro/ui/2KriTT5FTsMeuYe22LUrPRSpo9zk)) | [Visit Preview](https://ui-git-fork-yordaniliev2002-main-shadcn-pro.vercel.app) | Mar 17, 2025 10:54am |\n| **v4** | ✅ Ready ([Inspect](https://vercel.com/shadcn-pro/v4/2Y1s96u47H82xiqp93bPT5TjHvsQ)) | [Visit Preview](https://v4-git-fork-yordaniliev2002-main-shadcn-pro.vercel.app) | Mar 17, 2025 10:54am |"
+      isBot: true,
+      isEdited: true,
+      body: "The latest updates on your projects. Learn more about [Vercel for Git ↗](https://vercel.link/github-learn-more)\n\n| Name | Status | Preview | Updated (UTC) |\n| --- | --- | --- | --- |\n| ui | ✅ Ready ([Inspect](https://vercel.com/shadcn-pro/ui/2KriTT5FTsMeuYe22LUrPRSpo9zk)) | [Visit Preview](https://ui-git-fork-yordaniliev2002-main-shadcn-pro.vercel.app) | Mar 17, 2025 10:54am |\n| v4 | ✅ Ready ([Inspect](https://vercel.com/shadcn-pro/v4/2Y1s96u47H82xiqp93bPT5TjHvsQ)) | [Visit Preview](https://v4-git-fork-yordaniliev2002-main-shadcn-pro.vercel.app) | Mar 17, 2025 10:54am |"
     }
   ],
   timelineEvents: [
@@ -149,6 +141,39 @@ export const pullRequestData: PullRequest = {
         environment: "Preview – v4",
         url: "https://v4-a140zjszl-shadcn-pro.vercel.app"
       }
+    },
+    {
+      id: "LAB_kwDOIuCgE88AAAABNGUzMTE",
+      type: "label",
+      actor: {
+        id: "MDQ6VXNlcjEyNDU5OQ==",
+        login: "shadcn",
+        avatarUrl: "https://avatars.githubusercontent.com/u/124599?s=40&v=4",
+        url: "https://github.com/shadcn"
+      },
+      createdAt: "2025-03-17T11:00:00Z",
+      content: {
+        label: {
+          id: "LA_kwDOIuCgE88AAAABNGUzMTE",
+          name: "automerge",
+          color: "0e8a16"
+        }
+      }
+    },
+    {
+      id: "PRR_kwDOIuCgE86gVg1B",
+      type: "merge",
+      actor: {
+        id: "MDM6QXBwMjkxOTY=",
+        login: "kodiakhq",
+        avatarUrl: "https://avatars.githubusercontent.com/in/29196?s=40&v=4",
+        url: "https://github.com/apps/kodiakhq"
+      },
+      createdAt: "2025-03-17T11:29:20Z",
+      content: {
+        commit: "61e21e33568eaf6e0f024f87fc6e10597eed3b4e",
+        checksCount: 7
+      }
     }
   ],
   reviews: [
@@ -184,7 +209,17 @@ export const pullRequestData: PullRequest = {
       },
       state: "APPROVED",
       submittedAt: "2025-03-17T10:40:38Z",
-      body: "Thank you"
+      body: "Thank you",
+      reactions: {
+        totalCount: 2,
+        viewerHasReacted: false,
+        types: [
+          {
+            type: "HEART",
+            count: 2
+          }
+        ]
+      }
     }
   ],
   additions: 1,

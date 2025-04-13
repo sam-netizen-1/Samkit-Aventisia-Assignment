@@ -45,8 +45,10 @@ function formatRelativeTime(datetime: string): string {
   }
   
   const diffInMonths = Math.floor(diffInDays / 30);
-  if (diffInMonths < 12) {
-    return `${diffInMonths} month${diffInMonths > 1 ? 's' : ''} ago`;
+  if (diffInMonths === 1) {
+    return 'last month';
+  } else if (diffInMonths < 12) {
+    return `${diffInMonths} months ago`;
   }
   
   const diffInYears = Math.floor(diffInMonths / 12);

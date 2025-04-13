@@ -8,17 +8,19 @@ import { PullRequest } from './types';
 
 interface PullRequestPageProps {
   pullRequest?: PullRequest;
+  scrollY?: number;
 }
 
-export const PullRequestPage: React.FC<PullRequestPageProps> = ({ 
-  pullRequest = pullRequestData 
+export const PullRequestPage: React.FC<PullRequestPageProps> = ({
+  pullRequest = pullRequestData,
+  scrollY = 0
 }) => {
   const [activeTab, setActiveTab] = useState<'conversation' | 'commits' | 'checks' | 'files'>('conversation');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
       <div className="mb-6">
-        <PullRequestHeader pullRequest={pullRequest} />
+        <PullRequestHeader pullRequest={pullRequest} scrollY={scrollY} />
         
         <PullRequestTabs 
           pullRequest={pullRequest} 
