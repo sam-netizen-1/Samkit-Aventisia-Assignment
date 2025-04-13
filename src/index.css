@@ -2,19 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles to match GitHub */
+@layer base {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 bg-gray-50;
+  }
+  
+  .dark body {
+    @apply text-gray-100 bg-gray-900;
+  }
+}
+
 /* Dark mode styles */
 .dark {
   color-scheme: dark;
 }
 
-/* GitHub-specific styles */
-@layer components {
+/* GitHub-specific styles using only Tailwind utilities */
+@layer utilities {
   .prose pre {
     @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto;
   }
   
   .prose code {
-    @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+    @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono;
   }
   
   .prose a {

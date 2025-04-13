@@ -94,7 +94,7 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
         );
       case 'rename':
         return (
-          <div className="flex items-center">
+          <div className="flex items-center flex-wrap">
             <span className="text-gray-700 dark:text-gray-300">changed the title from </span>
             <span className="mx-1 font-semibold line-through dark:text-gray-300">{content.from}</span>
             <span className="text-gray-700 dark:text-gray-300">to</span>
@@ -121,7 +121,7 @@ export const PullRequestTimeline: React.FC<PullRequestTimelineProps> = ({ event 
         {renderIcon()}
       </div>
       <div className="flex-grow min-w-0">
-        <div className="flex items-center">
+        <div className="flex items-center flex-wrap">
           {actor && (
             <a href={actor.url} className="flex-shrink-0 mr-1">
               <img 
